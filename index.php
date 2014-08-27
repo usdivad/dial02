@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <!--
-  <head>
+	<head>
 	</head>
 	<body>
 	
@@ -74,9 +74,12 @@
 	//GETTING INDIVIDUAL SONG DATA
 	$songs = array();
 	//echo "<div id = 'main'>";
-	echo "<h3>".$title[0][0]."</h3><br>";
+
+	//Playlist title and author
+	echo "<h3 id='playlist_title'>".$title[0][0]."</h3><br>";
 	echo "by ".$dj[0][0]."<br><br><br>";
 	//print_r($dj);
+
 	//songclass
 	class Song {
 		public $artist = "Karl Malone";
@@ -190,7 +193,8 @@
 		
 		//generate spotify playlist
 		var out = "";
-		var spotifyURI = "spotify:trackset:PlaylistName:";
+		var playlist_title = $("#playlist_title").text().replace(/[^\w\d\s]/g, "");
+		var spotifyURI = "spotify:trackset:" + playlist_title + ":";
 		
 		for (var i=0; i<uA.length; i++) {
 			//the "out" stuff needs to be here because we have to wait for the URI to complete loading at all, hence .done();
